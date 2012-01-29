@@ -167,6 +167,15 @@ Installation:
 * `bundle`
 * `git commit -am "install hipchat"`
 
+#### IRC
+
+Required settings:
+
+* `JANKY_CHAT=irc`
+* `JANKY_CHAT_IRC_SERVER`: irc server
+* `JANKY_CHAT_IRC_PORT`: irc port
+* `JANKY_CHAT_IRC_NICK`: irc user
+
 ### Authentication
 
 To restrict access to members of a GitHub organization, [register a new
