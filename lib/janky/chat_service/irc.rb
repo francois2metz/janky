@@ -8,6 +8,7 @@ module Janky
       end
 
       def rooms
+        []
       end
     end
   end
