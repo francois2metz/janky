@@ -176,6 +176,11 @@ Required settings:
 * `JANKY_CHAT_IRC_PORT`: irc port
 * `JANKY_CHAT_IRC_NICK`: irc user
 
+Installation:
+
+* Add `require "janky/chat_service/irc"` to the `config/environment.rb` file
+  **before** the `Janky.setup(ENV)` line.
+
 ### Authentication
 
 To restrict access to members of a GitHub organization, [register a new
