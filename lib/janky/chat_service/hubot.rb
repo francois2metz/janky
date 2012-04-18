@@ -24,7 +24,7 @@ module Janky
         path = uri.path
 
         http = Net::HTTP.new(uri.host, uri.port)
-        if @uri.scheme == "https"
+        if uri.scheme == "https"
           http.use_ssl = true
         end
 
