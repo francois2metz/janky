@@ -241,12 +241,6 @@ class JankyTest < Test::Unit::TestCase
     assert hubot_build("github", "rails3").not_found?
   end
 
-  test "hubot rooms" do
-    response = hubot_request("GET", "/_hubot/rooms")
-    rooms    = Yajl.load(response.body)
-    assert_equal ["builds", "enterprise"], rooms
-  end
-
   test "hubot set room" do
     gh_post_receive("github", "master")
     Janky::Builder.start!

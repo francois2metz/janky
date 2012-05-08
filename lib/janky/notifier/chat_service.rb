@@ -15,7 +15,7 @@ module Janky
           build.compare
         ]
 
-        ::Janky::ChatService.speak(message, build.room_id, {:color => color})
+        ::Janky::ChatService.speak(message, build.room, {:color => color})
       end
     end
   end

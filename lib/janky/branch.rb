@@ -51,23 +51,23 @@ module Janky
     # commit  - the Janky::Commit instance to build.
     # compare - optional String GitHub Compare View URL. Defaults to the
     #           commit last build, if any.
-    # room_id - optional Fixnum Campfire room ID. Defaults to the room set on
+    # room    - optional room string. Defaults to the room set on
     #           the repository.
     #
     # Returns the newly created Janky::Build.
-    def build_for(commit, room_id = nil, compare = nil)
+    def build_for(commit, room = nil, compare = nil)
       if compare.nil? && build = commit.last_build
         compare = build.compare
       end
 
-      if room_id.nil? || room_id.zero?
-        room_id = repository.room_id
+      if room.nil?
+        room = repository.room
       end
 
       builds.create(
         :compare => compare,
         :commit  => commit,
-        :room_id => room_id
+        :room => room
       )
     end
 

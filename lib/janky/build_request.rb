@@ -1,10 +1,10 @@
 module Janky
   class BuildRequest
-    def self.handle(repo_uri, branch_name, commit, compare, room_id)
+    def self.handle(repo_uri, branch_name, commit, compare, room)
       repos = Repository.find_all_by_uri(repo_uri)
       repos.each do |repo|
         begin
-          new(repo, branch_name, commit, compare, room_id).handle
+          new(repo, branch_name, commit, compare, room).handle
         rescue Janky::Error => boom
           Exception.report(boom, :repo => repo.name)
         end
@@ -13,17 +13,17 @@ module Janky
       repos.size
     end
 
-    def initialize(repo, branch_name, commit, compare, room_id)
+    def initialize(repo, branch_name, commit, compare, room)
       @repo        = repo
       @branch_name = branch_name
       @commit      = commit
       @compare     = compare
-      @room_id     = room_id
+      @room        = room
     end
 
     def handle
       current_build = commit.last_build
-      build = branch.build_for(commit, @room_id, @compare)
+      build = branch.build_for(commit, @room, @compare)
 
       if !current_build || (current_build && current_build.red?)
         if @repo.enabled?
